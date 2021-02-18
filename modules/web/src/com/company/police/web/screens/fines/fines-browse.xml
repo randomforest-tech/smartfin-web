@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="finesesTable"
+        messagesPack="com.company.police.web.screens.fines">
+    <data readOnly="true">
+        <collection id="finesesDc"
+                    class="com.company.police.entity.Fines"
+                    view="fines-view">
+            <loader id="finesesDl">
+                <query>
+                    <![CDATA[select e from police_Fines e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="finesesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="finesesTable"
+                dataLoader="finesesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="finesesTable"
+                    width="100%"
+                    dataContainer="finesesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="drivingLicenseNo"/>
+                <column id="issuedBy"/>
+                <column id="issuedTime"/>
+                <column id="fineType"/>
+                <column id="fine"/>
+                <column id="policeStation"/>
+                <column id="province"/>
+                <column id="district"/>
+                <column id="longitude"/>
+                <column id="latitude"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="finesesTable.create"/>
+                <button id="editBtn" action="finesesTable.edit"/>
+                <button id="removeBtn" action="finesesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

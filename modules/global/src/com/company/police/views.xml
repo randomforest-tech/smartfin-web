@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="police_PoliceStation" name="policeStation-view" extends="_local">
+        <property name="province" view="_minimal"/>
+        <property name="district" view="_minimal">
+            <property name="code"/>
+        </property>
+    </view>
+    <view entity="police_Officer" name="officer-view" extends="_local">
+        <property name="rank" view="_minimal"/>
+        <property name="policeStation" view="_minimal"/>
+    </view>
+    <view entity="police_FineSheet" name="fineSheet-view" extends="_local">
+        <property name="policeStation" view="_minimal"/>
+        <property name="issuedTo" view="_minimal"/>
+        <property name="issuedBy" view="_minimal"/>
+    </view>
+    <view entity="police_Fines" name="fines-view" extends="_local">
+        <property name="issuedBy" view="_minimal"/>
+        <property name="fineType" view="_minimal"/>
+        <property name="policeStation" view="_minimal"/>
+        <property name="province" view="_minimal"/>
+        <property name="district" view="_minimal"/>
+    </view>
+</views>

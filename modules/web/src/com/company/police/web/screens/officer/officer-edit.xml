@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.police.web.screens.officer">
+    <data>
+        <instance id="officerDc"
+                  class="com.company.police.entity.Officer"
+                  view="officer-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="officerDc">
+            <column width="250px">
+                <textField id="policeIDField" property="policeID"/>
+                <textField id="fullNameField" property="fullName"/>
+                <pickerField id="rankField" property="rank">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="policeStationField" property="policeStation">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textArea id="addressField" property="address" rows="5"/>
+                <textField id="mobileField" property="mobile"/>
+                <textField id="homePhoneField" property="homePhone"/>
+                <textField id="officePhone1Field" property="officePhone1"/>
+                <textField id="officePhone2Field" property="officePhone2"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="fineSheetsTable"
+        messagesPack="com.company.police.web.screens.finesheet">
+    <data readOnly="true">
+        <collection id="fineSheetsDc"
+                    class="com.company.police.entity.FineSheet"
+                    view="fineSheet-view">
+            <loader id="fineSheetsDl">
+                <query>
+                    <![CDATA[select e from police_FineSheet e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="fineSheetsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="fineSheetsTable"
+                dataLoader="fineSheetsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="fineSheetsTable"
+                    width="100%"
+                    dataContainer="fineSheetsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="bookNo"/>
+                <column id="serialStartNo"/>
+                <column id="serialEndNumber"/>
+                <column id="policeStation"/>
+                <column id="issuedTo"/>
+                <column id="issuedDate"/>
+                <column id="issuedBy"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="fineSheetsTable.create"/>
+                <button id="editBtn" action="fineSheetsTable.edit"/>
+                <button id="removeBtn" action="fineSheetsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

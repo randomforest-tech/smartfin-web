@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="officersTable"
+        messagesPack="com.company.police.web.screens.officer">
+    <data readOnly="true">
+        <collection id="officersDc"
+                    class="com.company.police.entity.Officer"
+                    view="officer-view">
+            <loader id="officersDl">
+                <query>
+                    <![CDATA[select e from police_Officer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="officersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="officersTable"
+                dataLoader="officersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="officersTable"
+                    width="100%"
+                    dataContainer="officersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="policeID"/>
+                <column id="fullName"/>
+                <column id="rank"/>
+                <column id="policeStation"/>
+                <column id="address"/>
+                <column id="mobile"/>
+                <column id="homePhone"/>
+                <column id="officePhone1"/>
+                <column id="officePhone2"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="officersTable.create"/>
+                <button id="editBtn" action="officersTable.edit"/>
+                <button id="removeBtn" action="officersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

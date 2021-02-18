@@ -1,0 +1,5 @@
+@import "halo-ext";
+
+@mixin com_company_police {
+  @include com_company_police-halo-ext;
+}

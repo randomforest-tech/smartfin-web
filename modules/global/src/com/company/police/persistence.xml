@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="police" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.police.entity.District</class>
+        <class>com.company.police.entity.PoliceStation</class>
+        <class>com.company.police.entity.Province</class>
+        <class>com.company.police.entity.PoliceRank</class>
+        <class>com.company.police.entity.Officer</class>
+        <class>com.company.police.entity.FineSheet</class>
+        <class>com.company.police.entity.FineTypes</class>
+        <class>com.company.police.entity.Fines</class>
+    </persistence-unit>
+</persistence>
